@@ -1,0 +1,6 @@
+*.pdf
+
+config.local.php
+database/*.sqlite
+public/uploads/*
+!public/uploads/.keep
