@@ -6,6 +6,8 @@
     <?php
         $siteName = setting('site_name', config('app_name'));
         $siteTagline = setting('site_tagline', 'Archivo arcano');
+        $footerTitle = setting('footer_title', '');
+        $footerContent = setting('footer_content', '');
         $pageTitle = $title ?? $siteName;
         $description = $metaDescription ?? setting('site_meta_description', setting('hero_description', ''));
         $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
@@ -61,6 +63,14 @@
         </form>
     </header>
     <main><?= $content ?></main>
+    <?php if ($footerTitle !== '' || $footerContent !== ''): ?>
+        <footer class="site-footer">
+            <div class="site-footer-inner">
+                <?php if ($footerTitle !== ''): ?><h2><?= e($footerTitle) ?></h2><?php endif; ?>
+                <?php if ($footerContent !== ''): ?><p><?= nl2br(e($footerContent)) ?></p><?php endif; ?>
+            </div>
+        </footer>
+    <?php endif; ?>
     <script src="<?= e(url('/assets/js/site.js')) ?>"></script>
 </body>
 </html>

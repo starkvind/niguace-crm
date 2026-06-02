@@ -32,6 +32,8 @@ class AdminController
             'homepageTitle' => setting('homepage_title', 'Archivo de campana'),
             'heroEyebrow' => setting('hero_eyebrow', ''),
             'heroDescription' => setting('hero_description', ''),
+            'footerTitle' => setting('footer_title', ''),
+            'footerContent' => setting('footer_content', ''),
         ]);
     }
 
@@ -45,6 +47,8 @@ class AdminController
         Setting::set('homepage_title', trim((string) ($_POST['homepage_title'] ?? '')) ?: 'Archivo de campana');
         Setting::set('hero_eyebrow', trim((string) ($_POST['hero_eyebrow'] ?? '')));
         Setting::set('hero_description', trim((string) ($_POST['hero_description'] ?? '')));
+        Setting::set('footer_title', trim((string) ($_POST['footer_title'] ?? '')));
+        Setting::set('footer_content', trim((string) ($_POST['footer_content'] ?? '')));
         redirect('/admin/settings');
     }
 
