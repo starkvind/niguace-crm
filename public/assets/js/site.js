@@ -1,5 +1,6 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('#main-nav');
+const desktopMenu = window.matchMedia('(min-width: 1181px)');
 
 function setMenu(open) {
     if (!menuToggle || !mainNav) return;
@@ -19,7 +20,13 @@ mainNav?.addEventListener('click', (event) => {
 });
 
 window.addEventListener('resize', () => {
-    if (window.innerWidth > 760) {
+    if (desktopMenu.matches) {
+        setMenu(false);
+    }
+});
+
+desktopMenu.addEventListener?.('change', (event) => {
+    if (event.matches) {
         setMenu(false);
     }
 });
